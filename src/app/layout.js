@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,12 +18,14 @@ export default function RootLayout({ children }) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between h-16">
                 <div className="flex items-center">
-                  <h1 className="text-xl font-bold">CSC-336 Web Programming</h1>
+                  <Link href="/" className="text-xl font-bold hover:text-blue-200 transition-colors">
+                    CSC-336 Web Programming
+                  </Link>
                 </div>
                 <div className="flex items-center space-x-8">
-                  <a href="/" className="hover:text-blue-200 transition-colors">Home</a>
-                  <a href="/syllabus" className="hover:text-blue-200 transition-colors">Syllabus</a>
-                  <a href="/schedule" className="hover:text-blue-200 transition-colors">Schedule</a>
+                  <Link href="/" className="hover:text-blue-200 transition-colors">Home</Link>
+                  <Link href="/syllabus" className="hover:text-blue-200 transition-colors">Syllabus</Link>
+                  <Link href="/schedule" className="hover:text-blue-200 transition-colors">Schedule</Link>
                 </div>
               </div>
             </div>
