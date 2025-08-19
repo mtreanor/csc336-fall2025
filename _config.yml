@@ -1,8 +1,0 @@
-title: "CS 300: Web Programming"
-description: "Fall 2025 • American University"
-theme: minima  # built-in theme
-markdown: kramdown
-
-# Optional: link your custom stylesheet
-include:
-  - assets/css/style.css
