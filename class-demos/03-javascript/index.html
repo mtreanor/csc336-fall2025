@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Intro Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    .demo-box {
+      padding: 10px;
+      margin: 10px 0;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript in the Browser</h1>
+  <p>
+    This page demonstrates basic JavaScript concepts by changing HTML and CSS dynamically.  
+    Open your browser console (<code>Right Click → Inspect → Console</code>) to try some snippets directly.
+  </p>
+
+  <h2>1. Changing Text</h2>
+  <p id="text-demo">This text will be changed.</p>
+  <button onclick="document.getElementById('text-demo').textContent = 'Text changed with JS!'">
+    Change the text
+  </button>
+  <pre><code>
+document.getElementById("text-demo").textContent = "Text changed with JS!";
+  </code></pre>
+
+  <h2>2. Changing Styles</h2>
+  <div id="color-box" class="demo-box">I change colors!</div>
+  <button onclick="document.getElementById('color-box').style.backgroundColor = 'lightblue'">
+    Make Blue
+  </button>
+  <button onclick="document.getElementById('color-box').style.backgroundColor = 'lightgreen'">
+    Make Green
+  </button>
+  <pre><code>
+document.getElementById("color-box").style.backgroundColor = "lightblue";
+  </code></pre>
+
+  <h2>3. Showing and Hiding Elements</h2>
+  <p id="toggle-paragraph">You can hide or show me.</p>
+  <button onclick="
+    const p = document.getElementById('toggle-paragraph');
+    if (p.classList.contains('hidden')) {
+      p.classList.remove('hidden');
+    } else {
+      p.classList.add('hidden');
+    }
+  ">
+    Toggle Visibility
+  </button>
+  <pre><code>
+const p = document.getElementById("toggle-paragraph");
+p.classList.toggle("hidden");
+  </code></pre>
+
+  <h2>4. Responding to Clicks</h2>
+  <button id="alert-button">Click Me</button>
+  <script>
+    // Example: attaching an event listener
+    document.getElementById("alert-button").addEventListener("click", () => {
+      alert("You clicked me!");
+    });
+  </script>
+  <pre><code>
+document.getElementById("alert-button").addEventListener("click", () => {
+  alert("You clicked me!");
+});
+  </code></pre>
+
+  <h2>5. Generating Random Colors</h2>
+  <div id="random-color-box" class="demo-box">Click below to change my color</div>
+  <button onclick="
+    const box = document.getElementById('random-color-box');
+    const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    box.style.backgroundColor = randomColor;
+  ">
+    Random Color
+  </button>
+  <pre><code>
+const randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+document.getElementById("random-color-box").style.backgroundColor = randomColor;
+  </code></pre>
+
+  <h2>6. Adding New Content</h2>
+  <div id="list-area">
+    <ul>
+      <li>Existing item</li>
+    </ul>
+  </div>
+  <button onclick="
+    const ul = document.querySelector('#list-area ul');
+    const li = document.createElement('li');
+    li.textContent = 'New item added!';
+    ul.appendChild(li);
+  ">
+    Add List Item
+  </button>
+  <pre><code>
+const ul = document.querySelector("#list-area ul");
+const li = document.createElement("li");
+li.textContent = "New item added!";
+ul.appendChild(li);
+  </code></pre>
+</body>
+</html>
