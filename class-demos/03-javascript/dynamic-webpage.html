@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive List with Dynamic Styles</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin: 5px 0;
+    }
+    .list-item button {
+      margin-left: 10px;
+    }
+    #controls {
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Dynamic List Example</h1>
+
+  <h2>Add Items</h2>
+  <input type="text" id="item-input" placeholder="Write something...">
+  <button id="add-button">Add to List</button>
+
+  <ul id="item-list"></ul>
+
+  <h2>Apply CSS to All Items</h2>
+  <input type="text" id="css-input" placeholder="e.g., color: red; font-weight: bold;">
+  <button id="apply-css">Apply CSS</button>
+
+  <script>
+    const addButton = document.getElementById("add-button");
+    const itemInput = document.getElementById("item-input");
+    const itemList = document.getElementById("item-list");
+    const cssInput = document.getElementById("css-input");
+    const applyCssButton = document.getElementById("apply-css");
+
+    // Add item to list
+    addButton.addEventListener("click", () => {
+      const text = itemInput.value.trim();
+      if (text === "") return;
+
+      const li = document.createElement("li");
+      li.className = "list-item";
+      li.textContent = text;
+
+      // Delete button
+      const delButton = document.createElement("button");
+      delButton.textContent = "Delete";
+      delButton.addEventListener("click", () => {
+        li.remove();
+      });
+
+      li.appendChild(delButton);
+      itemList.appendChild(li);
+
+      itemInput.value = ""; // clear field
+    });
+
+    // Apply CSS dynamically to all list items
+    applyCssButton.addEventListener("click", () => {
+      const css = cssInput.value;
+      const items = document.querySelectorAll(".list-item");
+      items.forEach(item => {
+        item.style.cssText += css;
+      });
+    });
+  </script>
+</body>
+</html>
