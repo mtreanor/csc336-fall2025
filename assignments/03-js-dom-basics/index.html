@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 3 — JavaScript and Document Object Model (DOM) Basics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        button {
+            background-color: lightblue;
+            border: 1px solid #333;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        .dynamic {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px dashed #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Assignment 3 — JavaScript and Document Object Model (DOM) Basics</h1>
+
+    <h2>Overview</h2>
+    <p>Create a new webpage that introduces interactivity and basic document object model manipulation using JavaScript.
+        Do not build off of your previous assignments.
+    </p>
+
+    <h2>Project Structure</h2>
+    <ul>
+        <li><strong>Folder:</strong> <code>csc336-fall2025/03-js-dom-basics</code></li>
+        <li><strong>HTML:</strong> <code>index.html</code></li>
+        <li><strong>CSS:</strong> <code>style.css</code></li>
+        <li><strong>Javascript:</strong> <code>script.js</code></li>
+    </ul>
+
+    <h2>Requirements</h2>
+    <ul>
+        <li>Use <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById"><code>document.getElementById</code></a>
+            or <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"><code>document.querySelector</code></a>
+            to access html elements.
+        </li>
+        <li>Have a button that, when clicked, calls a function you wrote.</li>
+        <li>Use <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"><code>document.createElement</code></a>
+            at least once to add something new to the page.</li>
+        <li>Dynamically modify at least one element’s CSS style with JavaScript.</li>
+        <li>Include at least 3 CSS rules.</li>
+        <li>Be creative!</li>
+    </ul>
+
+    <h2>The Creative Part</h2>
+    <p>
+        In addition to meeting the technical requirements, your webpage should include a
+        <strong>creative interactive element</strong>. This is open-ended, but it must
+        involve user input and JavaScript changes to the page. Some possible ideas:
+    </p>
+    <ul>
+        <li>A “mood switcher” that changes the page background and text style when a button is clicked.</li>
+        <li>A simple fortune-teller that displays a random message when the user interacts with it.</li>
+        <li>An interactive mini-gallery where clicking a thumbnail reveals a larger image.</li>
+        <li>A color-picker that lets the user apply a color to newly created elements.</li>
+    </ul>
+    <p>
+        You do not need to use one of these examples — come up with something fun, interesting,
+        or unusual that shows off your ability to manipulate the DOM with JavaScript.
+    </p>
+
+    <div style="background-color: antiquewhite;">
+        <h2>Examples</h2>
+        <p>First, here are the two examples from class: <a href="../../class-demos/03-javascript/9-9-25/">Simple Example</a>, <a href="../../class-demos/03-javascript/">More Complex Example</a>, and <a href="../../class-demos/03-javascript/dynamic-webpage.html">Most In-Depth Example</a>.</p>
+        <p>These two examples demonstrate how to satisfy the requirement for the assignment. Using developer tools, look
+            at the code for this assignment webpage to see how the below example work.</p>
+        <p style="background-color: beige;" id="message">This text will change when the button is clicked.</p>
+        <button onclick="changeMessage()">Click Me</button>
+
+        <h2>Interactive Example Area</h2>
+        <button onclick="addDynamicElement()">Add a New Item</button>
+        <button onclick="highlightItems()">Highlight Items</button>
+
+        <div id="dynamic-area">
+            <!-- New items will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Example: using getElementById
+        function changeMessage() {
+            let messageElement = document.getElementById("message");
+            messageElement.textContent = "The button was clicked!";
+            messageElement.style.color = "darkgreen"; // dynamic CSS change
+        }
+
+        // Using createElement
+        function addDynamicElement() {
+            let container = document.getElementById("dynamic-area");
+            let newDiv = document.createElement("div");
+            newDiv.className = "dynamic";
+            newDiv.textContent = "A new dynamic element was added!";
+            container.appendChild(newDiv);
+        }
+
+        // Using querySelectorAll and classList
+        function highlightItems() {
+            let items = document.querySelectorAll(".dynamic");
+            items.forEach(item => {
+                item.classList.toggle("highlight");
+            });
+        }
+    </script>
+</body>
+
+</html>
