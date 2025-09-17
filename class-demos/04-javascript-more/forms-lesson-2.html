@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forms, Validation, and State (Expanded Example)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            display: block;
+            margin: 6px 0;
+            padding: 5px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+
+        #submissions li {
+            margin: 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Forms, Validation, and Simple State</h1>
+
+    <p>
+        This form shows different types of inputs. When you submit, your entry is validated and stored in memory.
+    </p>
+
+    <form id="userForm">
+        <label for="username">Name (at least 3 characters):</label>
+        <input type="text" id="username" name="username">
+
+        <label for="age">Age (must be 1–120):</label>
+        <input type="number" id="age" name="age" min="1" max="120">
+
+        <label>Favorite color:</label>
+        <input type="color" id="color" name="color">
+
+        <label>Choose your role:</label>
+        <select id="role" name="role">
+            <option value="">--Select--</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+            <option value="guest">Guest</option>
+        </select>
+
+        <label>
+            <input type="checkbox" id="subscribe" name="subscribe">
+            Subscribe to newsletter
+        </label>
+
+        <fieldset style="display:flex; gap:2em;">
+            <legend>Favorite Pet:</legend>
+            <div>
+                <input type="radio" id="cats" name="fav-pet" value="cats" checked />
+                <label for="cats">Cats</label>
+            </div>
+
+            <div>
+                <input type="radio" id="dogs" name="fav-pet" value="dogs" />
+                <label for="dogs">Dogs</label>
+            </div>
+
+            <div>
+                <input type="radio" id="other" name="fav-pet" value="other1" />
+                <label for="other">Other</label>
+                <input type="text" id="otherPetInput" placeholder="Type your pet..."
+                    style="display:none; margin-left:4px;">
+            </div>
+        </fieldset>
+
+        <label>Comments:</label>
+        <textarea id="comments" name="comments" rows="3"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="formMessage"></p>
+
+    <h2>All Submissions</h2>
+    <ul id="submissions"></ul>
+
+    <script>
+        // Simple "state": store submissions in an array
+        let submissions = [];
+
+        let radios = document.querySelectorAll('input[name="fav-pet"]');
+        let otherInput = document.getElementById('otherPetInput');
+        function handleRadioChange(e) {
+            if (e.target.value === 'other1') {
+                otherInput.style.display = 'inline-block';
+            } else {
+                otherInput.style.display = 'none';
+            }
+        }
+        for (let radio of radios) {
+            radio.addEventListener('change', handleRadioChange);
+        }
+
+        document.getElementById("userForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // stop reload
+
+            let name = document.getElementById("username").value.trim();
+            let age = document.getElementById("age").value.trim();
+            let color = document.getElementById("color").value;
+            let role = document.getElementById("role").value;
+            let subscribe = document.getElementById("subscribe").checked;
+            let comments = document.getElementById("comments").value.trim();
+
+            let message = document.getElementById("formMessage");
+
+            // --- Validation ---
+            if (name.length < 3) {
+                message.textContent = "Name must be at least 3 characters.";
+                message.className = "error";
+                return;
+            }
+            if (age === "" || Number(age) < 1 || Number(age) > 120) {
+                message.textContent = "Age must be between 1 and 120.";
+                message.className = "error";
+                return;
+            }
+            if (role === "") {
+                message.textContent = "Please select a role.";
+                message.className = "error";
+                return;
+            }
+
+            // --- Update state ---
+            let entry = {
+                name: name,
+                age: age,
+                color: color,
+                role: role,
+                subscribe: subscribe,
+                comments: comments
+            };
+            submissions.push(entry);
+
+            message.textContent = "Submission added successfully!";
+            message.className = "success";
+
+            // Clear form fields
+            document.getElementById("userForm").reset();
+
+            // Re-render submission list
+            renderSubmissions();
+        });
+
+        function getSelectedPet() {
+            let selected = document.querySelector('input[name="fav-pet"]:checked').value;
+            if (selected === 'other') {
+                return otherInput.value.trim() || 'Other';
+            }
+            return selected;
+        }
+
+
+        function renderSubmissions() {
+
+            let list = document.getElementById("submissions");
+            list.innerHTML = "";
+
+            for (let submission of submissions) {
+                let li = document.createElement("li");
+                li.innerHTML = `
+          <strong>${submission.name}</strong> 
+          (Age: ${submission.age}, Role: ${submission.role})<br>
+          Favorite color: <span style="color:${submission.color}">${submission.color}</span><br>
+          Subscribed: ${submission.subscribe ? "Yes" : "No"}<br>
+          Comments: ${submission.comments || "(none)"}
+        `;
+                list.appendChild(li);
+            }
+        }
+    </script>
+</body>
+
+</html>

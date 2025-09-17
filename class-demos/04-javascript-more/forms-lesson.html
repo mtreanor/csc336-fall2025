@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forms, Validation, and Simple State</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
+    h1 { color: darkblue; }
+    input, button { padding: 5px; margin: 4px 0; }
+    .error { color: red; font-weight: bold; }
+    .success { color: green; }
+    #userList li { margin: 3px 0; }
+  </style>
+</head>
+<body>
+  <h1>Lesson: Forms, Validation, and Simple State</h1>
+
+  <h2>1. Forms</h2>
+  <p>
+    Forms let us gather information from users. Try entering your name below
+    and clicking "Submit".
+  </p>
+  <form id="nameForm">
+    <label for="username">Enter your name:</label><br>
+    <input type="text" id="username" name="username">
+    <button type="submit">Submit</button>
+  </form>
+  <p id="formMessage"></p>
+
+  <h2>2. Validation</h2>
+  <p>
+    We can prevent invalid submissions with JavaScript. For example, names
+    must be at least 3 characters long.
+  </p>
+
+  <h2>3. Simple State</h2>
+  <p>
+    Below we keep a "state" variable — a list of submitted names. When you
+    submit a valid name, it’s stored in memory (JavaScript array) and
+    displayed on the page.
+  </p>
+  <ul id="userList"></ul>
+
+  <script>
+    // "State": a list of usernames
+    let users = [];
+
+    // Handle form submission
+    document.getElementById("nameForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // prevent page reload
+
+      let input = document.getElementById("username");
+      let message = document.getElementById("formMessage");
+      let name = input.value.trim();
+
+      // --- Validation ---
+      if (name.length < 3) {
+        message.textContent = "Name must be at least 3 characters long.";
+        message.className = "error";
+        return;
+      }
+
+      // --- Update state ---
+      users.push(name);  // add to array in memory
+      input.value = "";  // clear field
+      message.textContent = "Name added successfully!";
+      message.className = "success";
+
+      // --- Re-render user list ---
+      renderUserList();
+    });
+
+    function renderUserList() {
+      let list = document.getElementById("userList");
+      list.innerHTML = ""; // clear old list
+      for (let user of users) {
+        let li = document.createElement("li");
+        li.textContent = user;
+        list.appendChild(li);
+      }
+    //   users.forEach(user => {
+    //     let li = document.createElement("li");
+    //     li.textContent = user;
+    //     list.appendChild(li);
+    //   });
+    }
+  </script>
+</body>
+</html>

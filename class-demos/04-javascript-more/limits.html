@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manual DOM Demo</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    li { margin: 4px 0; }
+    .done { text-decoration: line-through; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>Manual DOM Updates Demo</h1>
+  
+  <input id="newTodo" type="text" placeholder="New todo">
+  <button onclick="addTodo()">Add</button>
+  
+  <ul id="todoList"></ul>
+
+  <script>
+    let todos = []; // data
+
+    function renderTodos() {
+      // Clear and rebuild entire list
+      let list = document.getElementById("todoList");
+      list.innerHTML = "";  // throw away everything
+      todos.forEach((todo, index) => {
+        let li = document.createElement("li");
+        li.textContent = todo.text;
+
+        if (todo.done) {
+          li.classList.add("done");
+        }
+
+        // Toggle button
+        let toggleBtn = document.createElement("button");
+        toggleBtn.textContent = todo.done ? "Undo" : "Done";
+        toggleBtn.onclick = () => {
+          todos[index].done = !todos[index].done;
+          renderTodos(); // re-render whole list
+        };
+
+        // Delete button
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.onclick = () => {
+          todos.splice(index, 1);
+          renderTodos(); // re-render whole list
+        };
+
+        li.appendChild(toggleBtn);
+        li.appendChild(deleteBtn);
+        list.appendChild(li);
+      });
+    }
+
+    function addTodo() {
+      let input = document.getElementById("newTodo");
+      let text = input.value.trim();
+      if (text !== "") {
+        todos.push({ text: text, done: false });
+        input.value = "";
+        renderTodos(); // re-render whole list
+      }
+    }
+  </script>
+</body>
+</html>

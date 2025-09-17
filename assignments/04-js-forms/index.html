@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 4: Forms and DOM Manipulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2em auto;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1, p,
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 0em;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        ul {
+            margin-bottom: 1em;
+        }
+
+        .folder-structure {
+            background: #f9f9f9;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: monospace;
+        }
+
+        .highlight {
+            background: #eef9f1;
+            padding: 0.5em;
+            border-left: 4px solid #27ae60;
+            margin: 1em 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Assignment 4: Forms and DOM Manipulation</h1>
+
+
+    <h2>Overview</h2>
+
+    <p>Create an interactive webpage that displays a collection of predefined information, and then allows users to
+        input more information of that type. The input from the user should first be validated, and then the page should
+        be dynamically updated using <code>document.querySelector</code> and related DOM methods.</p>
+
+    <h2>Folder Structure</h2>
+    <div class="folder-structure">
+        csc336-fall2025/04-forms-dom/<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;index.html<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;style.css<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;script.js<br>
+    </div>
+
+    <h2>Requirement Details</h2>
+
+    <h3>1. HTML Structure</h3>
+    <ul>
+        <li>A <code>&lt;form&gt;</code> with at least <strong>three different types of input elements</strong>
+            (for example: <code>text</code>, <code>email</code>, <code>number</code>,
+            <code>radio</code>, <code>checkbox</code>, <code>date</code>, <code>color</code>, <code>select</code>).
+        </li>
+        <li>A <strong>submit button</strong>.</li>
+        <li>An empty <code>&lt;div&gt;</code> or <code>&lt;ul&gt;</code> that will serve as an area for dynamically
+            added content.</li>
+    </ul>
+
+    <h3>2. CSS</h3>
+    <ul>
+        <li>At least <strong>3 CSS rules</strong> (for example: style the labels, inputs, and dynamically added
+            content).</li>
+        <li>Must use an <strong>external stylesheet</strong> named <code>style.css</code>.</li>
+    </ul>
+
+    <h3>3. JavaScript</h3>
+    <ul>
+        <li>Use an external javascript file. Remember to use the <code>defer</code> keyword to avoid trying to access
+            the DOM before it has been created.</li>
+        <li>Use <code>document.querySelector</code> and/or <code>document.querySelectorAll</code> to access form
+            elements and read their <code>value</code> property to get what the user entered.</li>
+        <li><strong>Validation: </strong> On form submission:
+            <ul>
+                <li>Validate at least <strong>two aspects of the input manually</strong>: 
+                    <ol style="font-style: oblique;">
+                        <li>Make sure all fields have
+                    been given input</li>
+                        <li>Some other requirement (such as numbers being less than 10, or names having
+                    at least three characters, etc.).</li>
+                    </ol>
+                </li>
+                <li>If validation fails, display an error message in the DOM.</li>
+                <li>If validation passes, insert new DOM elements representing that information to the results area.
+                </li>
+            </ul>
+        </li>
+        <li>Data representation: All data (including newly entered data) should be stored as an object in an array.</li>
+    </ul>
+
+    <h3>4. Theme</h3>
+    Some examples for what your webpage should be:</p>
+    <ul>
+        <li>A “guestbook” where visitors add their name, favorite color, and a short message.</li>
+        <li>A “mini poll” that lets users input various bits of information and displays the results.</li>
+        <li>A “task list" where users add tasks that appear in a list.</li>
+    </ul>
+
+    <h2>Example</h2>
+    <p>
+        See <a href="../../class-demos/04-javascript-more/9-16-25/">this complete example</a> from class as an example. I have annotated the javascript to have a ton of comments. You should definitely read them!
+    </p>
+
+    <h2>Submission</h2>
+    <p>
+        Your project must be accessible via this link:
+    <pre class="folder-structure">https://your-username.github.io/csc336-fall2025/04-js-forms/</pre>
+    </p>
+
+</body>
+
+</html>
