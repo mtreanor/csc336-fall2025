@@ -1,5 +1,13 @@
+div {
+    padding: 150px;
+}
+
 .demo-box {
     background-color: rgb(255, 78, 181);
     padding: 50px;
     border-radius: 15px;
+}
+
+#top-area {
+    padding: 20px;
 }

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 5: External JavaScript Libraries</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+      max-width: 800px;
+    }
+
+    h1, h2, h3 {
+      color: #333;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+    }
+
+    .highlight {
+      background: #ffffcc;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9em;
+      color: #666;
+      border-top: 1px solid #ccc;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Assignment 5: External JavaScript Libraries</h1>
+
+  <section>
+    <h2>Folder structure</h2>
+    <p>Your work for this assignment should live in the folder:</p>
+    <pre><code>csc336-fall2025/05-external-libraries</code></pre>
+
+    <p>The site should be viewable on <strong>GitHub Pages</strong>. For example:</p>
+    <pre><code>https://username.github.io/csc336-fall2025/05-external-libraries/</code></pre>
+  </section>
+
+  <section>
+    <h2>Goal</h2>
+    <p>
+      In this assignment, you will practice incorporating <strong>external JavaScript libraries</strong>
+      into a webpage using <code>&lt;script&gt;</code> tags (from a CDN). You will make a simple
+      <strong>restaurant landing page</strong> (e.g., for a pizza place) that uses your own HTML/CSS
+      plus at least one external JavaScript library to make the page more interesting or interactive.
+    </p>
+    <p>Think small. The point of this assignment is not to build a whole restaurant site, but to practice including and using an external JS library to add some interactivity or visual interest.</p>
+  </section>
+
+  <section>
+    <h2>Requirements</h2>
+    <ol>
+      <li>
+        Create a basic <strong>restaurant website landing page</strong>:
+        <ul>
+          <li>A title for your restaurant.</li>
+          <li>At least one image (e.g., food, restaurant, logo).</li>
+          <li>A short paragraph describing your restaurant.</li>
+          <li>Any other content you’d like (hours, location, fun facts, etc.).</li>
+        </ul>
+      </li>
+      <li>Add at least <span class="highlight">3 CSS rules</span> to style your page.</li>
+      <li>
+        Use at least <strong>one external JavaScript library</strong> loaded via CDN.
+        <ul>
+          <li>You must use it in a way that changes the page or adds some visible/interactive effect.</li>
+        </ul>
+      </li>
+      <li>Include your own JavaScript code that interacts with the library (not just static).</li>
+      <li><strong>Be creative!</strong> Your use of the library doesn’t have to be big or complicated. A small, fun effect is enough.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Example Libraries</h2>
+    <p>You may use any library that can be included via a <code>&lt;script&gt;</code> tag and works with plain HTML/CSS/JS. Here are some suggestions:</p>
+    <ul>
+      <li><a href="https://p5js.org/">p5.js</a> — Creative coding and drawing. Could draw a pizza on canvas.</li>
+      <li><a href="https://tonejs.github.io/">Tone.js</a> — Sound synthesis. Could play a fun sound when a button is clicked.</li>
+      <li><a href="https://www.chartjs.org/">Chart.js</a> — Charts. Could show a chart of “most popular pizzas.”</li>
+      <li><a href="https://micromodal.vercel.app/">Micromodal.js</a> — Simple modals. Could make a pop-up with today’s special.</li>
+      <li><a href="https://apvarun.github.io/toastify-js/">Toastify.js</a> — Toast notifications. Could show a little “Welcome!” popup.</li>
+      <li><a href="https://roughjs.com/">Rough.js</a> — Hand-drawn style graphics. Could decorate the page with hand-sketched pizza slices.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Example Ideas</h2>
+    <ul>
+      <li>A pizza website with a toast notification that says “2-for-1 deal today!” using Toastify.js.</li>
+      <li>A coffee shop page with a modal popup showing today’s special.</li>
+      <li>A dessert shop where you click a button and a p5.js sketch draws sprinkles across the screen.</li>
+      <li>A taco stand page with a Chart.js bar chart showing the most-ordered tacos.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Submission</h2>
+    <ul>
+      <li>Commit your code to the correct folder (<code>05-external-libraries</code>).</li>
+      <li>Verify that the page loads and works on GitHub Pages.</li>
+      <li>Make sure you included at least:
+        <ul>
+          <li>One external library (via CDN)</li>
+          <li>Your own HTML and CSS</li>
+          <li>Some JavaScript that interacts with the library</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</body>
+</html>
