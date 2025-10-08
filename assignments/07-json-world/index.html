@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 7 – JSON World</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      line-height: 1.6;
+      color: #222;
+    }
+    h1, h2, h3 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 4px;
+    }
+    code {
+      background: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    a {
+      color: #0077cc;
+    }
+    ul ul {
+      margin-top: 6px;
+    }
+    .tip {
+      background: #eef9ee;
+      border-left: 4px solid #77b977;
+      padding: 8px 12px;
+      margin: 12px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Assignment 7 – JSON World</h1>
+
+  <p><strong>Folder:</strong> <code>csc336-fall2025/07-json-world/</code></p>
+
+  <h2>Overview</h2>
+  <p>
+    In this assignment, you’ll design a small imaginary world in <strong>JSON</strong>, then write a simple <strong>Node.js script</strong> that reads and processes it.
+  </p>
+
+  <h2>Learning Goals</h2>
+  <ul>
+    <li>Understand how JSON encodes nested data structures</li>
+    <li>Practice writing and validating structured JSON data</li>
+    <li>Use Node.js to read and process data from a file</li>
+    <li>Work with ES Modules and the <code>fs</code> module</li>
+  </ul>
+
+  <h2>Part 1 – Create Your JSON World</h2>
+  <p>Create a file called <code>world.json</code> that describes a small imaginary world using nested JSON. If you are having trouble with understanding JSON, see this: <a href="https://www.w3schools.com/js/js_json_intro.asp" target="_blank">JSON Introduction (W3Schools)</a></p>
+
+  <h3>JSON Structure Requirements</h3>
+  <ul>
+    <li>Your top-level object must have a key called <code>"regions"</code> whose value is an <strong>array</strong>.</li>
+    <li>Each region must be an object containing:
+      <ul>
+        <li><code>"name"</code> – the name of the region</li>
+        <li><code>"climate"</code> – a string (e.g. <code>"temperate"</code>, <code>"arid"</code>)</li>
+        <li><code>"towns"</code> – an array of town objects</li>
+      </ul>
+    </li>
+    <li>Each town must include:
+      <ul>
+        <li><code>"name"</code> – the town’s name</li>
+        <li><code>"population"</code> – a number</li>
+        <li><code>"notable_people"</code> – an array of people</li>
+      </ul>
+    </li>
+    <li>Each person must include:
+      <ul>
+        <li><code>"name"</code> – their full name</li>
+        <li><code>"role"</code> – their occupation or title</li>
+        <li><code>"items"</code> – an array of objects or strings representing their possessions</li>
+      </ul>
+    </li>
+    <li>At least one item must be an <strong>object with its own properties</strong> (for example: an item that has both a <code>"name"</code> and <code>"rarity"</code>).</li>
+    <li>Your data should be at least <strong>3 levels deep</strong> (e.g., region → town → person → item).</li>
+  </ul>
+
+  <h3>Validation</h3>
+  <p>Before submitting, check that your JSON file is valid:</p>
+  <p><a href="https://jsonlint.com/" target="_blank">https://jsonlint.com/</a></p>
+  <p>Paste your JSON there and ensure you see <strong>“Valid JSON”</strong>.</p>
+
+  <h2>Part 2 – Create a Node Script</h2>
+  <p>
+    In the same folder, create a file called <code>world.js</code> that:
+  </p>
+  <ul>
+    <li>Imports the <code>fs</code> module using an <strong>ES module</strong> import (not <code>require()</code>).</li>
+    <li>Reads the <code>world.json</code> file from disk.</li>
+    <li>Parses the JSON into a JavaScript object.</li>
+    <li>Prints out some interesting subset of the data — for example, all of the <code>"notable_people"</code> names, all town names, or all items with a particular property.</li>
+  </ul>
+
+  <div class="tip">
+    <strong>Tip:</strong> In order to use <code>import</code> syntax in Node, you must create a file called <code>package.json</code> in the same folder and include this line inside it:
+    <pre>{
+  "type": "module"
+}</pre>
+  </div>
+
+  <p>Then, your import at the top of <code>world.js</code> should look like this:</p>
+  <pre>import * as fs from 'fs'; // or import fs from 'fs';</pre>
+
+  <p>Run your program in the terminal with:</p>
+  <pre>node world.js</pre>
+
+  <h2>Submission</h2>
+  <p>Submit the following files:</p>
+  <ul>
+    <li><code>world.json</code></li>
+    <li><code>world.js</code></li>
+    <li><code>package.json</code></li>
+  </ul>
+
+  <p>Each file should be neatly formatted and easy to read.</p>
+  
+  <div class="tip">
+    NOTE: I'd rather you turn in broken json than generated json. So *please* actually try to learn JSON.
+  </div>
+</body>
+</html>
