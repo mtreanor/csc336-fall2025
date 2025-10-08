@@ -1,0 +1,40 @@
+{
+  "restaurants": [
+    {
+      "name": "Pasta Palace",
+      "location": "Downtown",
+      "menu": [
+        {
+          "dish": "Spaghetti Primavera",
+          "price": 12.99,
+          "vegetarian": true,
+          "ingredients": ["spaghetti", "bell pepper", "broccoli", "olive oil", "parmesan"]
+        },
+        {
+          "dish": "Chicken Alfredo",
+          "price": 14.99,
+          "vegetarian": false,
+          "ingredients": ["fettuccine", "chicken", "cream", "parmesan"]
+        }
+      ]
+    },
+    {
+      "name": "Sushi Garden",
+      "location": "Uptown",
+      "menu": [
+        {
+          "dish": "Avocado Roll",
+          "price": 8.5,
+          "vegetarian": true,
+          "ingredients": ["rice", "avocado", "seaweed"]
+        },
+        {
+          "dish": "Salmon Nigiri",
+          "price": 10.0,
+          "vegetarian": false,
+          "ingredients": ["rice", "salmon"]
+        }
+      ]
+    }
+  ]
+}
