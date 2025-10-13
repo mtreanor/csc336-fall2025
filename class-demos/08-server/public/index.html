@@ -1,0 +1,13 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <button onclick="
+            console.log('clicked');
+            let promise = fetch('http://localhost:3000/test');
+            let t = promise.then(res => res.json() );
+            t.then((r)=>document.querySelector('body').innerHTML = r);
+            ">CLICK ME</button>
+    </body>
+</html>
