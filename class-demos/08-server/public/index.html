@@ -5,9 +5,14 @@
     <body>
         <button onclick="
             console.log('clicked');
-            let promise = fetch('https://csc336-fall2025.onrender.com/test');
+            let promise = fetch('/test');
             let t = promise.then(res => res.json() );
-            t.then((r)=>document.querySelector('body').innerHTML = r);
+            t.then(r => {
+                    r.forEach(element => {
+                        document.querySelector('body').innerHTML += element + '<br>';
+                    });
+                }
+            )
             ">CLICK ME</button>
     </body>
 </html>
