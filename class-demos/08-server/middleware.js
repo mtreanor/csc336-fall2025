@@ -32,7 +32,7 @@ app.get('/test', (req, res) => {
     let fileContents = fs.readFileSync("times.json", "utf-8");
     times = JSON.parse(fileContents);
   } catch (error) {
-    console.log("ERROR: fs.readFileSync threw an error. 'program_count.txt' doesn't exist.");
+    console.log("ERROR: fs.readFileSync threw an error. 'times.json' doesn't exist.");
   }
 
   times.push(Date.now());
@@ -41,5 +41,13 @@ app.get('/test', (req, res) => {
 
   res.json(times)
 })
+
+app.get("/hello/:thing", (req, res) => {
+  console.log("Hello?");
+  console.log(req.params.thing);
+  for (let key in req.query) {
+    console.log(key);
+  }
+});
 
 app.listen(3000);
