@@ -1,18 +1,59 @@
 <html>
-    <head>
 
-    </head>
-    <body>
-        <button onclick="
+<head>
+
+</head>
+
+<body>
+    <form id="testForm">
+        <input name="first" type="text" />
+        <input name="second" type="text" />
+        <input name="third" type="text" />
+        <button type="submit">SUBMIT</button>
+    </form>
+    <button id="testButton">CLICK ME</button>
+    <script>
+        let testForm = document.getElementById("testForm");
+        let testButton = document.getElementById("testButton");
+
+        testButton.addEventListener("click", e => {
             console.log('clicked');
             let promise = fetch('/test');
-            let t = promise.then(res => res.json() );
+            let t = promise.then(res => res.json());
             t.then(r => {
-                    r.forEach(element => {
-                        document.querySelector('body').innerHTML += element + '<br>';
-                    });
-                }
+                r.forEach(element => {
+                    document.querySelector('body').innerHTML += element + '<br>';
+                });
+            }
             )
-            ">CLICK ME</button>
-    </body>
+        })
+
+        testForm.addEventListener("submit", async e => {
+            e.preventDefault();
+            let fd = new FormData(testForm);
+            let data = Object.fromEntries(fd.entries());
+
+            // for (let entry of fd.entries()) {
+            //     console.log(entry[0]);
+            // }
+
+            try {
+                // Send JSON to the server. Create HTTP header.
+                const response = await fetch("/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+                console.log("Server says: " + JSON.stringify(result));
+            } catch (err) {
+                console.log("Error sending data: " + err.message);
+            }
+
+        })
+
+    </script>
+</body>
+
 </html>

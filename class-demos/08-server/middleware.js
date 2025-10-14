@@ -5,12 +5,25 @@ const app = express()
 
 const requestTime = function (req, res, next) {
   req.requestTime = Date.now()
+  console.log("MIDDLEWARE!");
   next()
 }
+
+app.use(express.json());
 
 app.use(express.static("public"));
 
 app.use(requestTime)
+
+app.post('/submit', (req, res) => {
+  console.log("Received request");
+  let data = req.body;
+  for (let key in data) {
+    console.log(`!!! data[${key}] = ${data[key]}`);
+  }
+  data.processed = true;
+  res.json(data);
+});
 
 app.get('/test', (req, res) => {
   let times = [];
