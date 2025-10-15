@@ -48,4 +48,4 @@ app.use(express.static("public"));
         - req.params.thing
             - /test/:thing in the route, and /test/thingValue in the url.
     - Passing in JSON
-        - app.use(express.json());
+        - Use "app.use(express.json());" and then don't req.body (without parse) is the JSON. express parsed it for us.
