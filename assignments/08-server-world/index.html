@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Assignment 08: Interactive World Server (two part assignment)</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    h1, h2, h3 {
-      color: #005a8d;
-    }
-    pre {
-      background: #f7f7f7;
-      border-left: 4px solid #005a8d;
-      padding: 1rem;
-      overflow-x: auto;
-    }
-    code {
-      background: #f0f0f0;
-      padding: 0.1rem 0.25rem;
-      border-radius: 3px;
-    }
-    ul {
-      margin-left: 1.25rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Assignment 08: Interactive World Server (two part assignment)</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #005a8d;
+        }
+
+        pre {
+            background: #f7f7f7;
+            border-left: 4px solid #005a8d;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        code {
+            background: #f0f0f0;
+            padding: 0.1rem 0.25rem;
+            border-radius: 3px;
+        }
+
+        ul {
+            margin-left: 1.25rem;
+        }
+    </style>
 </head>
+
 <body>
-  <h1>Assignment 08: Interactive World Server</h1>
+    <h1>Assignment 08: Interactive World Server</h1>
 
-  <p>
-    In this two-week project, you’ll build a small web app that serves and updates information about your
-    <code>world.json</code> file (from the previous assignment) through an Express.js server. Your front end will
-    fetch and display data from the server, allow user interaction, and send updates back to the backend.
-    The server will evolve or update the “world” based on user input and respond with the new state.
-  </p>
+    <p>
+        In this two-week project, you’ll build a small web app that serves and updates information about your
+        <code>world.json</code> file (from the previous assignment) through an Express.js server. Your front end will
+        fetch and display data from the server, allow user interaction, and send updates back to the backend.
+        The server will evolve or update the “world” based on user input and respond with the new state.
+    </p>
 
-  <h2>Project Structure</h2>
+    <h2>Project Structure</h2>
 
-  <pre><code>08-server-world/
+    <pre><code>08-server-world/
 │
 ├── public/
 │   ├── index.html
@@ -53,68 +61,67 @@
 └── server.js
 </code></pre>
 
-  <h2>Week 1 – Display and Update World Data</h2>
+    <h2>Week 1 – Display and Update World Data</h2>
 
-  <p>In week 1 you will first set up your project and display data from your <code>world.json</code> file on the front end through an Express server. Next, you will create a way for users to make a simple update to that world (for example, adding a person, changing an item, or modifying a number).</p>
+    <p>In week 1 you will first set up your project and display data from your <code>world.json</code> file on the front
+        end through an Express server. Next, you will create a way for users to make a simple update to that world (for
+        example, adding a person, changing an item, or modifying a number).</p>
 
-  <h3>Requirements</h3>
-  <ul>
-    <li>Create a <code>server.js</code> file that:
-      <ul>
-        <li>Serves static files from the <code>public</code> directory.</li>
-        <li>Has a <code>GET /world</code> route that sends the contents of <code>world.json</code>.</li>
-        <li>Has a <code>POST /update</code> route that reads the existing <code>world.json</code>, modifies it based on the client request, writes it back to disk, and sends the updated data as the response.</li>
-      </ul>
-    </li>
-    <li>In your front end (<code>index.html</code> and <code>script.js</code>):
-      <ul>
-        <li>Fetch <code>/world</code> on load and display the world information dynamically (i.e. generate HTML code for the data).</li>
-        <li>Provide an input or button that lets the user make a change to the world (for example: add a person, change an item a person carries, or add a new city to a country).</li>
-        <li>When the user makes a change, use <code>fetch('/update', { method: 'POST', ... })</code> to send the new information.</li>
-      </ul>
-    </li>
-  </ul>
+    <h3>Requirements</h3>
+    <ul>
+        <li>Create a <code>server.js</code> file that:
+            <ul>
+                <li>Serves static files from the <code>public</code> directory.</li>
+                <li>Has a <code>GET /world</code> route that sends the contents of <code>world.json</code> from the server.</li>
+                <li>Has a <code>POST /update</code> route that reads the existing <code>world.json</code>, modifies it
+                    based on the client request, writes it back to disk, and sends the updated data as the response.
+                </li>
+            </ul>
+        </li>
+        <li>In your front end (<code>index.html</code> and <code>script.js</code>):
+            <ul>
+                <li>Fetch <code>/world</code> on load and display the world information dynamically (i.e. generate HTML
+                    code for the data).</li>
+                <li>Provide at least one input and button that lets the user make a change to the world (for example: add a person,
+                    change an item a person carries, or add a new town, etc.). The input should make use of a form and the <code>FormData</code> pattern to create a JSON object from the inputs.</li>
+                <li>When the user submits the form, use <code>fetch('/update', { method: 'POST', ... })</code> to send the
+                    new information.</li>
+            </ul>
+        </li>
+    </ul>
 
-  <h3>🖥️ Example Express Server (with async/await)</h3>
+    <h3>🖥️ Example Code</h3>
+    <p>
+    <ul>
+        <li><a href="https://github.com/mtreanor/csc336-fall2025/tree/main/assignments/08-server-world/example">Here
+            is a
+            link to a project. Look at this to understand the project structure.</a></li>
+        <li><a href="https://github.com/mtreanor/csc336-fall2025/tree/main/assignments/08-server-world/example/server.js">Here's example server code</a></li>
+        <li><a href="https://github.com/mtreanor/csc336-fall2025/tree/main/assignments/08-server-world/example/public/script.js">Here's the front end script</a></li>
+    </ul>
+    </p>
 
-  <h3>🌐 Example Front-End Script (with async/await)</h3>
+    <!-- <h2>📅 Week 2 – Evolving the World</h2>
 
+    <p><strong>Goal:</strong> Extend your project so users can make more interesting and meaningful changes. Instead of
+        a direct update, your server should take the user’s input and <strong>transform</strong> or
+        <strong>evolve</strong> the world in some way.
+    </p>
 
-  <h3>✅ Week 1 Check-In</h3>
+    <h3>Examples</h3>
+    <ul>
+        <li>“Advance one year” → everyone ages, populations grow.</li>
+        <li>“Disaster strikes a city” → a property of that city changes.</li>
+        <li>“Trade happens” → items move between people or cities.</li>
+    </ul>
 
-  <ul>
-    <li>Run your server locally with <code>node server.js</code>.</li>
-    <li>Visit <code>http://localhost:3000</code> and see data from <code>world.json</code>.</li>
-    <li>Make a change on the front end that updates the world via a POST request.</li>
-    <li>Reload or re-fetch to confirm your data really changed.</li>
-  </ul>
-
-  <h2>📅 Week 2 – Evolving the World</h2>
-
-  <p><strong>Goal:</strong> Extend your project so users can make more interesting and meaningful changes. Instead of a direct update, your server should take the user’s input and <strong>transform</strong> or <strong>evolve</strong> the world in some way.</p>
-
-  <h3>Examples</h3>
-  <ul>
-    <li>“Advance one year” → everyone ages, populations grow.</li>
-    <li>“Disaster strikes a city” → a property of that city changes.</li>
-    <li>“Trade happens” → items move between people or cities.</li>
-  </ul>
-
-  <h3>Requirements</h3>
-  <ul>
-    <li>Keep your front end interactive — let users trigger one or more of these changes.</li>
-    <li>Handle the change logic in your <strong>server code</strong>, not only on the front end.</li>
-    <li>Send the updated world back and re-render it.</li>
-    <li>Always read from and write to the <code>world.json</code> file to persist updates.</li>
-  </ul>
-
-  <h3>🧭 What You’ll Practice</h3>
-  <ul>
-    <li>Serving and updating JSON data</li>
-    <li>Using <code>fetch()</code> for both GET and POST with async/await</li>
-    <li>Express routing and middleware</li>
-    <li>File I/O in Node with <code>fs/promises</code></li>
-    <li>Maintaining consistent application state</li>
-  </ul>
+    <h3>Requirements</h3>
+    <ul>
+        <li>Keep your front end interactive — let users trigger one or more of these changes.</li>
+        <li>Handle the change logic in your <strong>server code</strong>, not only on the front end.</li>
+        <li>Send the updated world back and re-render it.</li>
+        <li>Always read from and write to the <code>world.json</code> file to persist updates.</li>
+    </ul> -->
 </body>
+
 </html>
