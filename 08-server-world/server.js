@@ -1,10 +1,14 @@
 import express from "express";
 import fs from "fs";
+import cors from "cors";
 
 const app = express();
 
+
+
 app.use(express.static("./public"));
 app.use(express.json());
+app.use(cors());
 
 app.get("/world", (req, res) => {
     let world;
@@ -16,6 +20,7 @@ app.get("/world", (req, res) => {
     }
 
     console.log(world.regions[0].name);
+    world.regions.push({name:TESTING});
 
     res.json(world);
 });
