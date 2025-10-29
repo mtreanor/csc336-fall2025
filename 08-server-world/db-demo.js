@@ -29,9 +29,9 @@ async function run() {
     // });
 
     // Add something
-    // await commentsCollection.insertOne({
-    //     name: "Mike"
-    // });
+    await commentsCollection.insertOne({
+        name: "Mike"
+    });
 
     // Finding
     // let mike = await commentsCollection.findOne({name: "Mike"});
