@@ -25,6 +25,15 @@ async function setup() {
     }
 
     colorMode(HSB);
+
+    let llmResponse = await fetch("/llm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({prompt:"Tell me a short story about two cats."}),
+    });
+    let llmJSON = await llmResponse.json();
+
+    console.log(llmJSON.llm);
 }
 
 function draw() {
