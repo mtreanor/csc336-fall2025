@@ -4,7 +4,12 @@ import "./TodoItem.css"
 function TodoItem({todo}) {
  
   return (
-    <li style={{textDecoration: todo.complete ? "line-through" : "none"}}>
+    <li 
+        style={
+            {
+                textDecoration: todo.complete ? "line-through" : "none"
+            }
+        }>
         {todo.task}
     </li>
   )
