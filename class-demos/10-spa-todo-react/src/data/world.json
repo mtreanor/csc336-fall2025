@@ -1,0 +1,27 @@
+{
+  "regions": [
+    {
+      "name": "North America",
+      "climate": "Warm",
+      "towns": [
+        {
+          "name": "Washington DC",
+          "population": 800000,
+          "notable_people": [
+            {
+              "name": "Mike",
+              "role": "Professor",
+              "items": [
+                "laptop",
+                "fruit snacks"
+              ]
+            },
+            {
+              "name": "Buddy the cat"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

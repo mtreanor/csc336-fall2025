@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>09 - React Basics: Components, Props, and State</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    code {
+      padding: 3px 5px;
+      background: #eee;
+      border-radius: 4px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    h1, h2{
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 6px;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+<h1>09 - React Basics: Components, Props, and State</h1>
+
+<p>In this assignment, you will create a small React application that displays and updates a list. You will build at least <strong>two custom components</strong> that use <strong>props</strong> to influence their appearance.</p>
+
+<hr />
+
+<h2>Setup Instructions</h2>
+
+<ol>
+  <li>
+    On the command line, navigate to the course respository on your computer (csc336-fall2025). Next, create a new React project using Vite:
+    <pre><code>npm create vite@latest</code></pre>
+    <div style="padding-bottom: 1em;">Name it `09-react-basics and make sure you make it a `react` project and that you are using `javascript` (none of the other options will work for us).</div>
+  </li>
+
+  <li>
+    Move into the project folder:
+    <pre><code>cd 09-react-basics</code></pre>
+  </li>
+
+  <li>
+    Install dependencies:
+    <pre><code>npm install</code></pre>
+  </li>
+
+  <li>
+    Start the development server:
+    <pre><code>npm run dev</code></pre>
+  </li>
+
+  <li>Open the project in your code editor.</li>
+</ol>
+
+<hr />
+
+<h2>App Setup</h2>
+
+<p>Open <code>src/App.jsx</code> and remove all the default JSX. Start with:</p>
+
+<pre><code>import { useState } from "react";
+
+function App() {
+  return (
+    &lt;div&gt;
+      {/* Build your UI here */}
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+
+<hr />
+
+<h2>Your Tasks</h2>
+
+<h3>1. Create a List Stored in State</h3>
+
+<p>Inside <code>App</code>, create state that holds an array of items:</p>
+
+<pre><code>const [items, setItems] = useState([
+  { text: "Example Item", important: true }
+]);</code></pre>
+
+Customize what your list of items are. For example:
+<ul>
+    <li>Places to visit</li>
+    <li>Favorite books or movies</li>
+    <li>Goals</li>
+    <li>Anything (be creative!)</li>
+</ul>
+
+<h3>2. Display the List</h3>
+
+<p>Use <code>map()</code> to loop through the list and display each item:</p>
+
+<pre><code>{items.map((item, index) =&gt; (
+  &lt;ListItem
+    key={index}
+    text={item.text}
+    important={item.important}
+  /&gt;
+))}</code></pre>
+
+<p>You need to implement this <strong>ListItem</strong> component.</p>
+
+<h3>3. Add New Items</h3>
+
+<p>Create an input and button so the user can add items:</p>
+
+<pre><code>const [inputValue, setInputValue] = useState("");
+
+function handleAdd() {
+  setItems([...items, { text: inputValue, important: false }]);
+  setInputValue("");
+}</code></pre>
+
+You will need to add the input and button in the same place you put the items.map.
+
+<h3>4. Create Two Custom Components with Props</h3>
+
+<p><strong>Component #1 — ListItem.jsx</strong></p>
+
+Have the ListItem look different in some way based on the item itself.
+
+<p><strong>Component #2 — Up to you</strong></p>
+
+Create another component that is reused at least twice. It could be a part of the ListItem.
+
+<h3>5. Customize with CSS</h3>
+<p>Edit <code>App.css</code> or create new styles. Make it look your own.</p>
+
+<hr />
+<h2>Build and Publish Your Site</h2>
+
+<pre><code>npm run build</code></pre>
+
+<p>This creates a folder named <code>dist</code>.</p>
+
+<h3>Copy Your Build Into Your Course Website</h3>
+
+<ol>
+  <li>Copy the entire <code>dist</code> folder from your React project.</li>
+  <li>Paste it into the <code>csc336-fall2025</code> root directory.</li>
+  <li>Rename the folder to:
+    <pre><code>09-react-basics-live</code></pre>
+  </li>
+</ol>
+
+<h3>Commit and Push your project</h3>
+
+<p>Go to:</p>
+
+<p><code>https://&lt;your-github-username&gt;.github.io/csc336-fall2025/09-react-basics-live</code></p>
+
+<hr />
+
+</body>
+</html>

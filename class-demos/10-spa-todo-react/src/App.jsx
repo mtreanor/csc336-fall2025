@@ -1,14 +1,27 @@
 // src/App.jsx
-import { useState } from "react";
+import TodoItem from "./TodoItem.jsx"
+import { useState, useEffect } from "react";
+import worldJSON from "./data/world.json";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
 
+  useEffect(()=>{
+    async function getFromDatabase() {
+      const response = await fetch("http://localhost:3000/todos");
+      let todosFromServer = await response.json();
+      
+      todosFromServer.push({text: worldJSON.regions[0].name, id:101});
+      setTodos(todosFromServer);
+    }
+    getFromDatabase();
+  }, [])
+
   function addTodo() {
     if (!text.trim()) return;
 
-    const newTodo = { id: Date.now(), text, done: false };
+    const newTodo = { id: Date.now(), text: text, done: false };
     setTodos([...todos, newTodo]); // 👈 Immutable update
     setText(""); // clear input
   }
@@ -34,16 +47,7 @@ function App() {
 
       <ul>
         {todos.map(todo => (
-          <li
-            key={todo.id}
-            onClick={() => toggleTodo(todo.id)}
-            style={{
-              cursor: "pointer",
-              textDecoration: todo.done ? "line-through" : "none"
-            }}
-          >
-            {todo.text}
-          </li>
+          <TodoItem key={todo.id} todo={todo} toggleTodo={()=>toggleTodo(todo.id)} />
         ))}
       </ul>
     </div>
