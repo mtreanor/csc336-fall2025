@@ -8,10 +8,15 @@ export default function HomePage() {
 
   // Load student data initially
   useEffect(() => {
-    fetch("/data/students.json")
-      .then((res) => res.json())
-      .then(() => setStudents());
+    async function getStudentsFromFile() {
+      let res = await fetch("students.json");
+      let data = await res.json();
+      setStudents(data);
+      console.log(data);
+    }
+    getStudentsFromFile();
   }, []);
+
 
   async function addStudent() {
     if (!nameInput.trim()) return;

@@ -5,7 +5,7 @@ import path from "path";
 export async function POST(request) {
   const { name } = await request.json(); // read data sent from client
 
-  const filePath = path.join(process.cwd(), "data", "students.json");
+  const filePath = path.join(process.cwd(), "public", "students.json");
   const jsonData = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
   // Create new entry with random grade
