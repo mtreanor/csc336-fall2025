@@ -1,0 +1,10 @@
+[
+    {
+        "task": "First item",
+        "complete": true
+    },
+    {
+        "task": "Second item",
+        "complete": false
+    }
+]

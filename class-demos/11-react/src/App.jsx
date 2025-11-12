@@ -1,7 +1,11 @@
 // Import useState from React - this is a "hook" that lets us manage state (data that can change)
 // useState is a function that returns an array with two elements: [currentValue, setterFunction]
 import { useState } from 'react'
-import TodoItem from "./TodoItem"
+import TodoItem from "./TodoItem.jsx"
+import TodoJSON from "./data.json";
+
+// import Pokemon from "./Pokemon"
+// import RandomPokemon from './RandomPokemon';
 
 // This is a React component - a function that returns JSX (JavaScript XML, looks like HTML)
 // Components are reusable pieces of UI that can have their own state and logic
@@ -18,24 +22,7 @@ function App() {
   const [task, setTask] = useState("");
   
   // Another useState hook - this time for an array of todo objects
-  const [todos, setTodos] = useState([
-    {
-      task: "Eat dinner",
-      complete: false,
-      id: 1
-    },
-    {
-      task: "Pet cat",
-      complete: true,
-      id: 2
-    },
-    {
-      task: "Beat Mario Sunshine",
-      complete: true,
-      id: 3
-    }
-  ]);
-
+  const [todos, setTodos] = useState(TodoJSON);
 
   // Function to add a new todo to the list
   function addTodo() {
@@ -64,7 +51,6 @@ function App() {
         onChange={(e) => setTask(e.target.value)} 
       />
       <button onClick={addTodo}>Add Todo</button>
-      
 
       <ul>
         {/* .map() loops through the todos array and creates a component for each one */}

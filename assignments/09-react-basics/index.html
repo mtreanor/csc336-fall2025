@@ -34,11 +34,12 @@
 
 <h1>09 - React Basics: Components, Props, and State</h1>
 
-<p>In this assignment, you will create a small React application that displays and updates a list. You will build at least <strong>two custom components</strong> that use <strong>props</strong> to influence their appearance.</p>
+<h2>Part 1: Components, Props, and State</h2>
 
-<hr />
+<p>Create a small React application that displays and updates a list. You will build at least <strong>two custom components</strong> that use <strong>props</strong> to influence their appearance.</p>
 
-<h2>Setup Instructions</h2>
+
+<h3>Setup Instructions</h3>
 
 <ol>
   <li>
@@ -67,7 +68,7 @@
 
 <hr />
 
-<h2>App Setup</h2>
+<h3>App Setup</h3>
 
 <p>Open <code>src/App.jsx</code> and remove all the default JSX. Start with:</p>
 
@@ -86,9 +87,9 @@ export default App;
 
 <hr />
 
-<h2>Your Tasks</h2>
+<h3>Your Tasks</h3>
 
-<h3>1. Create a List Stored in State</h3>
+<h4>1. Create a List Stored in State</h4>
 
 <p>Inside <code>App</code>, create state that holds an array of items:</p>
 
@@ -131,7 +132,7 @@ function handleAdd() {
 
 You will need to add the input and button in the same place you put the items.map.
 
-<h3>4. Create Two Custom Components with Props</h3>
+<h4>4. Create Two Custom Components with Props</h4>
 
 <p><strong>Component #1 — ListItem.jsx</strong></p>
 
@@ -143,6 +144,52 @@ Create another component that is reused at least twice. It could be a part of th
 
 <h3>5. Customize with CSS</h3>
 <p>Edit <code>App.css</code> or create new styles. Make it look your own.</p>
+
+<hr />
+
+<h2>Part 2: Routing and API Integration</h2>
+
+<p>In this part, you will add routing to your application and fetch data from an external API using <code>useEffect</code>.</p>
+
+<h3>1. Install React Router</h3>
+
+<p>First, install the routing library:</p>
+
+<pre><code>npm install react-router-dom</code></pre>
+
+<h3>2. Set Up Routing</h3>
+
+<p>Modify your <code>App.jsx</code> to use React Router. You'll need at least <strong>three routes</strong>:</p>
+<ul>
+  <li>A home route (<code>/</code>) that displays your list from Part 1</li>
+  <li>An "About" or similar informational page</li>
+  <li>A page that displays data fetched from an API</li>
+</ul>
+<p>Note: you'll need to move the list of items from Part 1 into a new component.</p>
+
+<p>See <a href="https://github.com/mtreanor/csc336-fall2025/blob/main/class-demos/12-react-2/src/App.jsx">class-demos/12-react-2/src/App.jsx</a> for an example of routing setup.</p>
+
+<h3>3. Create a Component with useEffect and API Integration</h3>
+
+<p>Create a new component that:</p>
+<ul>
+  <li>Uses <code>useEffect</code> to fetch data from an external API when the component mounts or when a dependency changes</li>
+  <li>Uses <code>useState</code> to store the fetched data</li>
+  <li>Displays the API data in your component</li>
+  <li>Handles loading states and errors appropriately</li>
+</ul>
+
+<p><strong>Important:</strong> You <strong>cannot</strong> use the Pokemon API (pokeapi.co) that was used in the class example. Choose a different public API. Some suggestions:</p>
+<ul>
+  <li><a href="https://jsonplaceholder.typicode.com/">JSONPlaceholder</a> - Fake REST API for testing</li>
+  <li><a href="https://dog.ceo/dog-api/">Dog API</a> - Random dog images</li>
+  <li><a href="https://openweathermap.org/api">OpenWeatherMap</a> - Weather data (requires free API key)</li>
+  <li><a href="https://www.themoviedb.org/documentation/api">The Movie Database</a> - Movie data (requires free API key)</li>
+  <li>Your own API hosted on render.com!</li>
+  <li>Or find another public API that interests you.</li>
+</ul>
+
+<p>See <a href="https://github.com/mtreanor/csc336-fall2025/blob/main/class-demos/12-react-2/src/RandomPokemon.jsx">class-demos/12-react-2/src/RandomPokemon.jsx</a> for an example of using <code>useEffect</code> with an API (but remember to use a different API!).</p>
 
 <hr />
 <h2>Build and Publish Your Site</h2>
@@ -170,11 +217,20 @@ Create another component that is reused at least twice. It could be a part of th
 
 <hr />
 
-<h2 id="sample-code">Example Project From Class with Comments</h2>
+<h2 id="sample-code">Example Projects From Class with Comments</h2>
+
+<h3>Part 1 Examples</h3>
 <ul>
   <li><a href="https://github.com/mtreanor/csc336-fall2025/blob/main/class-demos/11-react/src/App.jsx">App.jsx</a></li>
   <li><a href="https://github.com/mtreanor/csc336-fall2025/blob/main/class-demos/11-react/src/TodoItem.jsx">TodoItem.jsx</a></li>
   <li><a href="https://github.com/mtreanor/csc336-fall2025/tree/main/class-demos/11-react/src">Link to entire project</a></li>
+</ul>
+
+<h3>Part 2 Examples</h3>
+<ul>
+  <li><a href="https://github.com/mtreanor/csc336-fall2025/blob/main/class-demos/12-react-2/src/App.jsx">App.jsx</a> - Routing example</li>
+  <li><a href="https://github.com/mtreanor/csc336-fall2025/blob/main/class-demos/12-react-2/src/RandomPokemon.jsx">RandomPokemon.jsx</a> - useEffect and API example</li>
+  <li><a href="https://github.com/mtreanor/csc336-fall2025/tree/main/class-demos/12-react-2/src">Link to entire project</a></li>
 </ul>
 
 </body>

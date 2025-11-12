@@ -14,13 +14,12 @@ function Home() {
 
   // 2. A single handler for all input changes
   const handleChange = (event) => {
-    const { name, value } = event.target;
 
     // Use the functional form of setFormData to ensure we have the latest state
     // and use the input's 'name' attribute to update the correct key dynamically.
     setFormData(prevFormData => ({
       ...prevFormData, // Copy all existing fields
-      [name]: value      // Update only the field that changed
+      [event.target.name]: event.target.value      // Update only the field that changed
     }));
   };
 
