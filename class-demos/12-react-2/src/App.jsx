@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         {/* Navigation bar with NavLink components.
             NavLink is like Link but automatically adds an 'active' class
             to the currently selected route, which we can style in CSS. */}
