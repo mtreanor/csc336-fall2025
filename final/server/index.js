@@ -25,7 +25,7 @@ app.get("/api/llm", async (req, res) => {
         console.log("ERROR: fs.readFileSync threw an error. 'songs.json' doesn't exist.");
     }
 
-    if (songs.length === 0) {
+    if (songs.length === 0 || req.query["refresh"] === "true") {
 
         let prompt = "Give me a list of 10 beatles songs. Include one that isn't real. Only include the song titles in the list, and do not number the songs in the list. Put each title on a separate line.";
         const llmResponse = await ai.models.generateContent({

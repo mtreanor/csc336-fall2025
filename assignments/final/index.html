@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Final Project — Full-Stack Web App (React + Express, Hosted on Render)</title>
+    <style>
+        :root {
+            --bg: #fbfbfb;
+            --card: #fff;
+            --muted: #6b7280;
+            --accent: #0366d6;
+            --maxw: 900px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color: #111827;
+        }
+
+        body {
+            background: var(--bg);
+            margin: 0;
+            padding: 32px 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            max-width: var(--maxw);
+            width: 100%;
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+            padding: 28px;
+        }
+
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 1.6rem;
+        }
+
+        header p.lead {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        section {
+            margin-top: 22px;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.05rem;
+        }
+
+        h3 {
+            margin: 14px 0 6px 0;
+            font-size: 0.98rem;
+        }
+
+        ul {
+            margin: 8px 0 8px 0;
+            padding-left: 1.2rem;
+        }
+
+        ol {
+            margin: 8px 0 8px 0;
+            padding-left: 1.2rem;
+        }
+
+        pre {
+            background: #0f1724;
+            color: #e6eef8;
+            padding: 12px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 0.9rem;
+        }
+
+        .note {
+            background: #fffbea;
+            border-left: 4px solid #f59e0b;
+            padding: 12px;
+            border-radius: 6px;
+            color: #92400e;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            gap: 12px;
+        }
+
+
+        
+
+        footer {
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <article class="page" role="main" aria-labelledby="title">
+        <header>
+            <h1 id="title">Final Project — Full-Stack Web App (React + Express, Fully Hosted on Render)</h1>
+            <!-- <p class="lead">Build a complete full-stack application: React front-end, Express back-end, persistent data, and deploy everything on <strong>Render</strong>. This document explains the
+                requirements, expectations, deliverables, rubric, and useful tips.</p> -->
+        </header>
+        <section aria-labelledby="overview">
+            <!-- <h2 id="overview">Overview</h2> -->
+            <p>Combine everything we've learned this semester and implement a full-stack web application using:</p>
+            <ul>
+                <li><strong>React</strong> (single-page application) for the front-end</li>
+                <li><strong>Node/Express</strong> for the back-end API</li>
+                <li>Persistent storage: a JSON file on the server</li>
+                <li><strong>Render</strong> for deployment (both client and server)</li>
+            </ul>
+
+            <div class="note" role="note">
+                <strong>Important note for the 12/2 class:</strong>
+                <p class="muted">On <strong>December 2</strong> we will walk through how to configure your React project
+                    to communicate with a server, and how to deploy both front-end and back-end together on Render.</p>
+                <p class="muted"><strong>Before class on 12/2</strong> you are expected to have made <strong>significant
+                        progress on your React front-end</strong> using a local JSON data import (for example `import
+                    data from './data/items.json'`). Specifically, your React app should already:</p>
+                <ul class="muted">
+                    <li>Render pages and routes (using React Router)</li>
+                    <li>Display imported JSON data via components</li>
+                    <li>Include components, layout, and initial CSS styling</li>
+                    <li>Begin designing the form UI (validation can wait until after class)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section aria-labelledby="requirements">
+            <h2 id="requirements">Project Requirements</h2>
+
+            <h3>Front-end (React)</h3>
+            <ul>
+                <li><strong>Professional-ish CSS:</strong> Make it look like a real website.</li>
+                <li><strong>Interactive UI elements:</strong> e.g. dropdowns, buttons, inputs,
+                    collapsible sections, or anything else.</li>
+                <li><strong>Form:</strong> a form that collects information (e.g. text, email, password, whatever.), with
+                    client-side validation and helpful errors.</li>
+                <li><strong>External library:</strong> use at least one external JS/CSS library (like you did on <a href="../05-external-libraries">Assignment 5 - External Libraries</a>)</li>
+                <li><strong>Routing:</strong> use React Router (<code>npm install react-router-dom</code>). At minimum provide Home, a view that contains a complete list of data,
+                    and a Create/Form page to add data (name them however you wish).</li>
+            </ul>
+
+            <h3>Back-end (Express)</h3>
+            <ul>
+                <li>Implement a small (REST) API:
+                    <ul>
+                        <li><code>GET /api/items</code> — return a list of items</li>
+                        <li><code>POST /api/items</code> — add a new item from the form</li>
+                    </ul>
+                </li>
+                <li>Validate incoming POST data on the server and return sensible error messages if there is an error (e.g. an entry already exists).
+                </li>
+                <li>Persist data across server restarts using a JSON file. You can also use MongoDB if you want to be impressive/teach yourself a valuable skill.</li>
+            </ul>
+
+            <h3>Full-stack Integration</h3>
+            <ul>
+                <li>The React front-end must fetch the collection from your Express API and present it with custom
+                    components.</li>
+                <li>Form submissions on the front-end should POST to the API, update the persistent data, and update the UI.</li>
+            </ul>
+
+            <h3>Deployment</h3>
+            <ul>
+                <li><strong>Everything must be hosted on Render.</strong></li>
+                <li>Front-end deployed as a static site on Render.</li>
+                <li>Back-end deployed as a web service on Render.</li>
+                <li>Your front-end must fetch from your deployed back-end (again, we'll go over this on 12-2)</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="ideas">
+            <h2 id="ideas">Suggested Themes / Example Ideas</h2>
+            <p>Choose a theme that fits the requirements. Some ideas:</p>
+            <ul>
+                <li>Personal portfolio — add project entries via a form</li>
+                <li>Fan wiki for some fictional world — character pages, user submissions</li>
+                <li>Event website — schedule + guest registration</li>
+                <li>Recipe manager — add and tag recipes</li>
+                <li>Creative demo — p5.js interactive canvas + data</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="deliverables">
+            <h2 id="deliverables">Deliverables</h2>
+            <ul>
+                <li>A folder named <code>final</code> in your course repository that contains both the front-end and back-end (client/ and server/) (see below)</li>
+                <li>A <code>README.md</code> file in your <code>final</code> folder that contains:</li>
+                    <ul>
+                        <li><strong>The URL to your deployed app on Render</strong></li>
+                        <li>What your app is and what it does</li>
+                        <li>Which external libraries you used</li>
+                        <li>Anything you would like me to know</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        
+
+        <section aria-labelledby="starter">
+            <h2 id="starter">Example Project File Layout</h2>
+            <pre><code>
+final/
+├─ client/ # React app (Vite)
+│ ├─ public/
+│ ├─ src/
+│ │ ├─ Home.jsx
+│ │ ├─ List.jsx # Doesn't need to be named this
+│ │ ├─ AddToList.jsx # Doesn't need to be named this
+│ │ ├─ App.jsx
+│ │ └─ main.jsx
+│ ├─ package.json
+│
+├─ server/
+│ ├─ index.js # Express app
+│ ├─ data.json # If using file-based persistence
+│ ├─ package.json
+│ ├─ public/
+| | └─ # the static build of your client (from running <code>npm run build</code> in the client)
+|
+└─ README.md # See above for what to put in here
+</code></pre>
+
+ 
+
+    </article>
+</body>
+
+</html>
